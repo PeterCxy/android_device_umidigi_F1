@@ -2,7 +2,7 @@
 /recovery	emmc	/dev/block/platform/bootdevice/by-name/recovery	flags=backup=1
 /system_root	ext4	/dev/block/platform/bootdevice/by-name/system flags=display="System"
 /vendor         ext4    /dev/block/platform/bootdevice/by-name/vendor flags=backup=1
-/data		ext4	/dev/block/platform/bootdevice/by-name/userdata	flags=reservedsize=128m;encryptable=/dev/block/platform/bootdevice/by-name/metadata
+/data		ext4	/dev/block/platform/bootdevice/by-name/userdata	flags=dm_use_original_path;encryptable=/dev/block/platform/bootdevice/by-name/metadata
 /cache		ext4	/dev/block/platform/bootdevice/by-name/cache
 /misc		emmc	/dev/block/platform/bootdevice/by-name/misc
 /metadata   emmc    /dev/block/platform/bootdevice/by-name/metadata
