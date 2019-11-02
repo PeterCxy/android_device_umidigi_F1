@@ -4,6 +4,9 @@ on init
     setprop ro.adb.nonblocking_ffs 0
     setprop persist.sys.usb.config adb
 
-on fs
     # Override vendor fstab
+    mount none /system/etc/fstab.mt6771 /vendor/etc/fstab.mt6771 bind
+
+on fs
+    # Override vendor fstab again because things like Magisk will re-bind /vendor
     mount none /system/etc/fstab.mt6771 /vendor/etc/fstab.mt6771 bind
