@@ -1,0 +1,18 @@
+# Nfc
+-app/Nfc_st/Nfc_st.apk
+bin/nfcstackp
+etc/nfcee_access.xml
+-framework/com.st.android.nfc_dta_extensions.jar
+-framework/com.st.android.nfc_extensions.jar
+lib/libdtaNfaProvider.so
+lib/libnfc_st_dta_jni.so
+lib/libnfc_st_dta.so
+lib/libstnfc-nci.so
+lib/libstnfc_nci_jni.so
+lib/libicuXD.so|0db3075566eddf480c0ca9970b743ab2e612d6c2
+lib64/libdtaNfaProvider.so
+lib64/libnfc_st_dta_jni.so
+lib64/libnfc_st_dta.so
+lib64/libstnfc-nci.so
+lib64/libstnfc_nci_jni.so
+lib64/libicuXD.so|a3e103a1c15d6dfb523dc39aa41b3aa3e850c1bf

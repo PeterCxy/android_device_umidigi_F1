@@ -86,6 +86,9 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.mt6771
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
 
+# Soong
+PRODUCT_SOONG_NAMESPACES += vendor/umidigi/F1
+
 # Treble
 BOARD_VNDK_VERSION := current
 PRODUCT_TARGET_VNDK_VERSION := 28
