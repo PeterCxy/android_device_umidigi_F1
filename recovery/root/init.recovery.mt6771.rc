@@ -1,3 +1,5 @@
+import /trustkernel.rc
+
 on init
     start logd
     mkdir /config
@@ -12,6 +14,15 @@ on init
     mkdir /config/usb_gadget/g1/configs/b.1 0777 shell shell
     mkdir /config/usb_gadget/g1/configs/b.1/strings/0x409 0770 shell shell
     mkdir /config/usb_gadget/g1/functions/ffs.adb
+
+    mkdir /vendor/lib64 0700 root root
+    mkdir /vendor/lib64/hw 0700 root root
+    symlink /vendor/manifest.xml /system_root/system/manifest.xml
+    symlink /sbin/keystore.mt6771.so /vendor/lib64/hw/keystore.mt6771.so
+    symlink /sbin/keystore.v2.trustkernel.so /vendor/lib64/hw/keystore.v2.trustkernel.so
+    symlink /sbin/gatekeeper.mt6771.so /vendor/lib64/hw/gatekeeper.mt6771.so
+    start hwservicemanager
+    setprop crypto.ready 1
 
 on fs
     export ANDROID_ROOT /system_root
@@ -42,3 +53,38 @@ service logd /sbin/logd
     group root
     disabled
     seclabel u:r:recovery:s0
+
+service hwservicemanager /sbin/hwservicemanager
+    user root
+    group root
+    disabled
+    onrestart setprop hwservicemanager.ready false
+    seclabel u:r:recovery:s0
+
+service servicemanager /sbin/servicemanager
+    user root
+    group root readproc
+    disabled
+    seclabel u:r:recovery:s0
+
+service gatekeeper-1-0 /sbin/android.hardware.gatekeeper@1.0-service
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+service keymaster-3-0 /sbin/android.hardware.keymaster@3.0-service
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+on property:crypto.ready=0
+    stop keymaster-3-0
+    stop gatekeeper-1-0
+    stop servicemanager
+
+on property:vendor.sys.listeners.registered=true
+    start keymaster-3-0
+    start gatekeeper-1-0
+    start servicemanager
