@@ -10,3 +10,5 @@ on init
 on fs
     # Override vendor fstab again because things like Magisk will re-bind /vendor
     mount none /system/etc/fstab.mt6771 /vendor/etc/fstab.mt6771 bind
+    # Remove default overlay to frameworks-res so that ours can work
+    mount none /dev/null /vendor/overlay/framework-res__auto_generated_rro.apk bind
