@@ -13,7 +13,3 @@ PRODUCT_MANUFACTURER := A-gold
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.usb.ffs.aio_compat=true
 
-# HACK: Set vendor patch level
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    ro.build.version.security_patch=2019-05-05
-PLATFORM_SECURITY_PATCH := 2019-05-05
