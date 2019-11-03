@@ -12,3 +12,5 @@ on fs
     mount none /system/etc/fstab.mt6771 /vendor/etc/fstab.mt6771 bind
     # Remove default overlay to frameworks-res so that ours can work
     mount none /dev/null /vendor/overlay/framework-res__auto_generated_rro.apk bind
+    # Override codec config
+    mount none /system/etc/media_codecs_mediatek_video.xml /vendor/etc/media_codecs_mediatek_video.xml bind
