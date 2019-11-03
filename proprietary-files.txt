@@ -2,6 +2,8 @@
 -app/Nfc_st/Nfc_st.apk
 bin/nfcstackp
 etc/nfcee_access.xml
+etc/permissions/com.st.android.nfc_extensions.xml
+etc/permissions/com.st.android.nfc_dta_extensions.xml
 -framework/com.st.android.nfc_dta_extensions.jar
 -framework/com.st.android.nfc_extensions.jar
 lib/libdtaNfaProvider.so
