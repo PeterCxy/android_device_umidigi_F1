@@ -3,6 +3,8 @@ import /trustkernel.rc
 on init
     # Somehow AOSP build system hasn't provided a symlink here
     symlink /system_root/system /system
+    # Create a more standard /dev/block layout for our scripts
+    symlink /dev/block/platform/bootdevice /dev/block/bootdevice
 
     start logd
     mkdir /config
