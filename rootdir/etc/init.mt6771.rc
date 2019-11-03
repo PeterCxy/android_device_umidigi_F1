@@ -4,6 +4,11 @@ on init
     setprop ro.adb.nonblocking_ffs 0
     setprop persist.sys.usb.config adb
 
+    # Force disable all VoLTE support -- it requires intensive modification of frameworks
+    # without framework support it creates all sorts of problems. Disable it.
+    setprop persist.vendor.mtk.volte.enable 0
+    setprop persist.vendor.mtk_ct_volte_support 0
+
     # Custom overrides that need to happen right on boot
     # Override vendor fstab
     # We only need it to be overridden before things are mounted
