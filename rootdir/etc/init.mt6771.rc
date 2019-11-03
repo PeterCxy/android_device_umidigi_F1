@@ -4,13 +4,19 @@ on init
     setprop ro.adb.nonblocking_ffs 0
     setprop persist.sys.usb.config adb
 
+    # Custom overrides that need to happen right on boot
     # Override vendor fstab
+    # We only need it to be overridden before things are mounted
     mount none /system/etc/fstab.mt6771 /vendor/etc/fstab.mt6771 bind
-
-on fs
-    # Override vendor fstab again because things like Magisk will re-bind /vendor
-    mount none /system/etc/fstab.mt6771 /vendor/etc/fstab.mt6771 bind
-    # Remove default overlay to frameworks-res so that ours can work
-    mount none /dev/null /vendor/overlay/framework-res__auto_generated_rro.apk bind
     # Override codec config
     mount none /system/etc/media_codecs_mediatek_video.xml /vendor/etc/media_codecs_mediatek_video.xml bind
+
+on zygote-start
+    # Custom overrides that need to happen AFTER things like Magisk have loaded
+    # zygote-start is re-run after decryption, so we can be sure these will be mounted
+    # over the Magisk ones
+    # Remove default overlay to frameworks-res so that ours can work
+    mount none /system/overlay/DummyOverlay.apk /vendor/overlay/framework-res__auto_generated_rro.apk bind
+    # Override codec config again in case of Magisk
+    mount none /system/etc/media_codecs_mediatek_video.xml /vendor/etc/media_codecs_mediatek_video.xml bind
+

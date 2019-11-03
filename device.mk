@@ -54,6 +54,10 @@ PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     Tag
 
+# Overlay
+PRODUCT_PACKAGES += \
+    DummyOverlay
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.secure_lock_screen.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.secure_lock_screen.xml
