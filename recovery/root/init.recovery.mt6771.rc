@@ -1,6 +1,9 @@
 import /trustkernel.rc
 
 on init
+    # Somehow AOSP build system hasn't provided a symlink here
+    symlink /system_root/system /system
+
     start logd
     mkdir /config
     mount configfs none /config
