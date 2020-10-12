@@ -28,6 +28,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Snap
 
+# HIDL
+PRODUCT_PACKAGES += \
+    libhidltransport \
+    libhwbinder \
+
 # Init cripts
 PRODUCT_PACKAGES += \
     init.mt6771.rc \
