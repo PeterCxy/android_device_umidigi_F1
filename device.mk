@@ -16,9 +16,6 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-lineage
 
-# Overlay from mtk-telephony-ext
-include vendor/mediatek/hardware/telephony-ext/overlay.mk
-
 # A/B
 AB_OTA_UPDATER := false
 
@@ -67,8 +64,7 @@ PRODUCT_COPY_FILES += \
 
 # Telephony
 PRODUCT_PACKAGES += \
-    telephony-ext \
-    mtk-telephony-ext
+    telephony-ext
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
